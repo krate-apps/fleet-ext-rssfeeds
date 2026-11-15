@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "extensionId": "org.fleet.rssfeeds",
+  "pages": [
+    {
+      "id": "feeds",
+      "title": "RSS Feeds",
+      "route": "/ext/org.fleet.rssfeeds/feeds"
+    }
+  ],
+  "actions": [
+    {
+      "id": "refresh-feeds",
+      "label": "Poll feeds now",
+      "target": "global",
+      "primary": true
+    },
+    {
+      "id": "show-status",
+      "label": "Show feed status",
+      "target": "global"
+    }
+  ],
+  "panels": [
+    {
+      "id": "rss-status",
+      "title": "RSS",
+      "placement": "sidebar"
+    }
+  ],
+  "forms": [
+    {
+      "id": "add-feed",
+      "title": "Add or update feed",
+      "fields": [
+        {
+          "name": "url",
+          "label": "Feed URL",
+          "kind": "url",
+          "required": true,
+          "placeholder": "https://example.com/feed.xml"
+        },
+        {
+          "name": "label",
+          "label": "Torrent label",
+          "kind": "text",
+          "placeholder": "movies"
+        },
+        {
+          "name": "loginAccount",
+          "label": "loginmgr account name (optional)",
+          "kind": "text",
+          "placeholder": "tracker-account",
+          "advanced": true
+        },
+        {
+          "name": "includeRegex",
+          "label": "Include title regex (RE2)",
+          "kind": "text",
+          "placeholder": "1080p|Bluray",
+          "advanced": true
+        },
+        {
+          "name": "excludeRegex",
+          "label": "Exclude title regex (RE2)",
+          "kind": "text",
+          "placeholder": "CAM|TS",
+          "advanced": true
+        },
+        {
+          "name": "intervalSec",
+          "label": "Poll interval seconds (min 60)",
+          "kind": "number",
+          "help": "How often the worker wakes up.",
+          "placeholder": "60",
+          "advanced": true
+        },
+        {
+          "name": "gatewayId",
+          "label": "Intake gatewayId (optional)",
+          "kind": "text",
+          "help": "Registered client id (local-rtorrent, or a gateway id).",
+          "placeholder": "local-rtorrent",
+          "advanced": true
+        },
+        {
+          "name": "enabled",
+          "label": "Enabled",
+          "kind": "boolean",
+          "help": "Master switch for this worker."
+        }
+      ],
+      "description": "Add a feed URL, then optionally filter titles and pick where torrents land."
+    }
+  ]
+}

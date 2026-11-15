@@ -1,0 +1,26 @@
+schema: 1
+id: org.fleet.rssfeeds
+name: RSS Feeds
+description: Poll RSS/Atom feeds with filters and enqueue matching items.
+version: 1.0.0
+api: ">=1.0.0 <2.0.0"
+engines:
+  - rtorrent
+capabilities:
+  - torrents.read
+  - torrents.add
+  - torrents.actions
+  - jobs.schedule
+  - storage.read
+  - storage.write
+  - http.fetch
+  - urlrewrite.read
+  - loginmgr.write
+  - notifications.write
+frontend:
+  type: declarative
+  entry: ui/extension.json
+backend:
+  type: process
+  executable: bin/rssfeeds-worker
+  protocol: jsonrpc-2
